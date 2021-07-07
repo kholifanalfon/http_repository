@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http_repository/http_repository.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('http_repository');
@@ -15,9 +14,5 @@ void main() {
 
   tearDown(() {
     channel.setMockMethodCallHandler(null);
-  });
-
-  test('getPlatformVersion', () async {
-    expect(await HttpRepository.platformVersion, '42');
   });
 }
