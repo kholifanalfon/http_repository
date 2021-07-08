@@ -77,7 +77,6 @@ class Response {
   }) : _reporting = reporting;
 
   factory Response.fromJSON(Map<String, dynamic> map) {
-    print(map);
     return Response(
       result: map["result"],
       status: map["status"],
