@@ -140,6 +140,10 @@ class Repository {
       if(files != null)
         req.files.addAll(files);
 
+      req.headers.addAll({
+        'Content-Type': 'application/json; charset=UTF-8',
+      });
+
       http.Response response = await http.Response.fromStream(await req.send());
 
       return Response.fromJSON(json.decode(response.body));
