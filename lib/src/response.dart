@@ -59,19 +59,19 @@ class LogReporting {
 }
 
 class Response {
-  bool result;
+  bool? result;
   int? status;
-  String message;
+  String? message;
   int? code;
   dynamic data;
 
   Map<String, dynamic>? _reporting;
 
   Response({
-    this.result = false,
+    this.result,
     this.status,
     this.code,
-    this.message = '',
+    this.message,
     this.data,
     Map<String, dynamic>? reporting,
   }) : _reporting = reporting;
