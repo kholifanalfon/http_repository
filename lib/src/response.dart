@@ -59,25 +59,24 @@ class LogReporting {
 }
 
 class Response {
-  bool? result;
+  bool result;
   int? status;
-  String? message;
+  String message;
   int? code;
   dynamic data;
 
   Map<String, dynamic>? _reporting;
 
   Response({
-    this.result,
+    required this.result,
     this.status,
     this.code,
-    this.message,
+    required this.message,
     this.data,
     Map<String, dynamic>? reporting,
   }) : _reporting = reporting;
 
   factory Response.fromJSON(Map<String, dynamic> map) {
-    print(map);
     return Response(
       result: map["result"],
       status: map["status"],
