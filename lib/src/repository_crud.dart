@@ -2,7 +2,6 @@ import 'package:http/http.dart' as http;
 import 'package:http_repository/http_repository.dart';
 
 abstract class RepositoryCRUD {
-
   String get api;
 
   Future<Response> select(Map<String, String> params) {
@@ -17,11 +16,7 @@ abstract class RepositoryCRUD {
     return Repository.get(api, body: params);
   }
 
-  Future<Response> store(Map<String, String> datas) {
-    return Repository.post('$api', body: datas);
-  }
-
-  Future<Response> storeWithFiles(Map<String, String> datas, {List<http.MultipartFile>? files}) {
+  Future<Response> store(Map<String, String> datas, {List<http.MultipartFile>? files}) {
     return Repository.multiPart('$api', 'POST', fields: datas, files: files);
   }
 
@@ -29,15 +24,11 @@ abstract class RepositoryCRUD {
     return Repository.get("$api/$id", body: params);
   }
 
-  Future<Response> update(int id, Map<String, String> datas) {
-    return Repository.put("$api/$id", body: datas);
-  }
-
-  Future<Response> updateWithFile(Map<String, String> datas, {List<http.MultipartFile>? files}) {
-    return Repository.multiPart('$api', 'PUT', fields: datas, files: files);
+  Future<Response> update(int id, Map<String, String> datas, {List<http.MultipartFile>? files}) {
+    return Repository.multiPart("$api/update/$id", 'POST', fields: datas, files: files);
   }
 
   Future<Response> delete(int id, {Map<String, String>? params}) {
-    return Repository.delete("$api/$id", body: params);
+    return Repository.post("$api/delete/$id", body: params);
   }
 }
