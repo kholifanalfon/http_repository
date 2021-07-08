@@ -17,7 +17,11 @@ abstract class RepositoryCRUD {
     return Repository.get(api, body: params);
   }
 
-  Future<Response> store(Map<String, String> datas, {List<http.MultipartFile>? files}) {
+  Future<Response> store(Map<String, String> datas) {
+    return Repository.post('$api', body: datas);
+  }
+
+  Future<Response> storeWithFiles(Map<String, String> datas, {List<http.MultipartFile>? files}) {
     return Repository.multiPart('$api', 'POST', fields: datas, files: files);
   }
 
@@ -25,8 +29,12 @@ abstract class RepositoryCRUD {
     return Repository.get("$api/$id", body: params);
   }
 
-  Future<Response> update(int id, Map<String, String> datas, {List<http.MultipartFile>? files}) {
-    return Repository.multiPart("$api/$id", 'PUT', fields: datas, files: files);
+  Future<Response> update(int id, Map<String, String> datas) {
+    return Repository.put("$api/$id", body: datas);
+  }
+
+  Future<Response> updateWithFile(Map<String, String> datas, {List<http.MultipartFile>? files}) {
+    return Repository.multiPart('$api', 'PUT', fields: datas, files: files);
   }
 
   Future<Response> delete(int id, {Map<String, String>? params}) {

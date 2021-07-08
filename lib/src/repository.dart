@@ -141,7 +141,7 @@ class Repository {
         req.files.addAll(files);
 
       req.headers.addAll({
-        'Content-Type': 'application/json; charset=UTF-8',
+        'Content-Type': 'application/x-www-form-urlencoded',
       });
 
       http.Response response = await http.Response.fromStream(await req.send());
