@@ -4,13 +4,13 @@ import 'package:http_repository/http_repository.dart';
 abstract class RepositoryCRUD {
   String get api => '';
 
-  Future<String?> get token;
+  Future<String> get token => Future(() => '');
 
   Future<Map<String, String>> get _headers async {
     Map<String, String> _headers = {};
 
-    String? _token = await token;
-    if(_token != null)
+    String _token = await token;
+    if(_token != '')
       _headers.addAll({'Authorization': 'Bearer $token'});
     
     return _headers;
