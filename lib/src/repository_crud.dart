@@ -6,42 +6,43 @@ abstract class RepositoryCRUD {
 
   Future<String> get token => Future(() => '');
 
-  Future<Map<String, String>> get _headers async {
-    Map<String, String> _headers = {};
+  Future<Map<String, String>> _params(Map<String, String>? params) async {
+    if(params == null)
+      params = {};
 
     String _token = await token;
     if(_token != '') {
-      _headers.addAll({'Set-Cookie': '$_token'});
+      params.addAll({'_token': '$_token'});
     }
     
-    return _headers;
+    return params;
   }
 
   Future<Response> select(Map<String, String> params) async {
-    return Repository.get("$api/select", body: params, headers: await _headers);
+    return Repository.get("$api/select", body: await _params(params));
   }
 
   Future<Response> datatables(Map<String, String> params) async {
-    return Repository.post('$api/datatables', body: params, headers: await _headers);
+    return Repository.post('$api/datatables', body: await _params(params));
   }
 
   Future<Response> index(Map<String, String> params) async {
-    return Repository.get(api, body: params, headers: await _headers);
+    return Repository.get(api, body: await _params(params));
   }
 
   Future<Response> store(Map<String, String> datas, {List<http.MultipartFile>? files}) async {
-    return Repository.multiPart('$api', 'POST', fields: datas, files: files, headers: await _headers);
+    return Repository.multiPart('$api', 'POST', fields: await _params(datas), files: files);
   }
 
   Future<Response> show(int id, {Map<String, String>? params}) async {
-    return Repository.get("$api/$id", body: params, headers: await _headers);
+    return Repository.get("$api/$id", body: await _params(params!));
   }
 
   Future<Response> update(int id, Map<String, String> datas, {List<http.MultipartFile>? files}) async {
-    return Repository.multiPart("$api/update/$id", 'POST', fields: datas, files: files, headers: await _headers);
+    return Repository.multiPart("$api/update/$id", 'POST', fields: await _params(datas), files: files);
   }
 
   Future<Response> delete(int id, {Map<String, String>? params}) async {
-    return Repository.post("$api/delete/$id", body: params, headers: await _headers);
+    return Repository.post("$api/delete/$id", body: await _params(params));
   }
 }
