@@ -10,7 +10,7 @@ abstract class RepositoryCRUD {
 
   Future<Map<String, String>> get _headers async {
     Map<String, String> headers = {};
-    headers.addAll({'X-Requested-With': 'Web-Api'});
+    headers.addAll({'x-api-key': 'Web-Api'});
 
     print(headers);
 
