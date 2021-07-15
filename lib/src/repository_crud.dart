@@ -10,9 +10,6 @@ abstract class RepositoryCRUD {
 
   Future<Map<String, String>> get _headers async {
     Map<String, String> headers = {};
-    headers.addAll({'Access-Control-Request-Headers': 'x-token', 'x-token': 'testing'});
-
-    print(headers);
 
     return headers;
   }
@@ -26,8 +23,6 @@ abstract class RepositoryCRUD {
     if(_token != '') {
       _params.addAll({credentials: _token});
     }
-
-    print(_params);
     
     return _params;
   }
