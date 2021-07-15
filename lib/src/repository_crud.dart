@@ -40,7 +40,7 @@ abstract class RepositoryCRUD {
   }
 
   Future<Response> show(int id, {Map<String, String>? params}) async {
-    return Repository.get("$api/$id", body: await _params(params!));
+    return Repository.get("$api/$id", body: await _params(params));
   }
 
   Future<Response> update(int id, Map<String, String> datas, {List<http.MultipartFile>? files}) async {
