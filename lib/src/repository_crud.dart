@@ -4,6 +4,8 @@ import 'package:http_repository/http_repository.dart';
 abstract class RepositoryCRUD {
   String get api => '';
 
+  String get credentials => 'crendetials';
+
   Future<String> get token => Future(() => '');
 
   Future<Map<String, String>> _params(Map<String, String>? params) async {
@@ -12,7 +14,7 @@ abstract class RepositoryCRUD {
 
     String _token = await token;
     if(_token != '') {
-      params.addAll({'_token': '$_token'});
+      params.addAll({credentials: _token});
     }
     
     return params;
