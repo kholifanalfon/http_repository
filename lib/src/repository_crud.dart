@@ -9,15 +9,16 @@ abstract class RepositoryCRUD {
   Future<String> get token => Future(() => '');
 
   Future<Map<String, String>> _params(Map<String, String>? params) async {
-    if(params == null)
-      params = Map<String, String>();
+    Map<String, String> _params = {};
+    if(params != null)
+      _params.addAll(params);
 
     String _token = await token;
     if(_token != '') {
-      params.addAll({credentials: _token});
+      _params.addAll({credentials: _token});
     }
     
-    return params;
+    return _params;
   }
 
   Future<Response> select(Map<String, String> params) async {
