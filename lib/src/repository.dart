@@ -25,15 +25,9 @@ class Repository {
 
       if(headers != null) merger.addAll(headers);
 
-      http.Request request = http.Request("post", Uri.parse(url));
-      request.headers.addAll(merger);
-      request.body = body.toString();
+      final response = await _client.post(Uri.parse(url), headers: merger, body: body, encoding: encoding);
 
-      final response = await request.send();
-
-      print(response.reasonPhrase);
-
-      return Response();
+      return Response.fromJSON(json.decode(response.body));
     } catch(e, trace) {
       return Response(result: false, status: 500, message: requestFailedMessage, reporting: {
         'type': 'dart',
