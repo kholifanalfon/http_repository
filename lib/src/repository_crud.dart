@@ -17,6 +17,8 @@ abstract class RepositoryCRUD {
     if(_token != '') {
       _params.addAll({credentials: _token});
     }
+
+    print(_params);
     
     return _params;
   }
