@@ -13,7 +13,7 @@ abstract class RepositoryCRUD {
 
     String _token = await token;
     if(_token != '')
-      _headers.addAll({HttpHeaders.cookieHeader: 'x-token: $_token'});
+      _headers.addAll({HttpHeaders.setCookieHeader: 'x-token: $_token'});
     
     return _headers;
   }
