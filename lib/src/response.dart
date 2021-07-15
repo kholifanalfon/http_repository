@@ -33,7 +33,7 @@ class LogReporting {
       function: map['function'],
       line: map['line'],
       message: map['message'].toString(),
-      trace: map['trace'],
+      trace: map['trace'].toString(),
     );
   }
 
