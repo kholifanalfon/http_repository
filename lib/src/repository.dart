@@ -24,7 +24,7 @@ class Repository {
 
       if(headers != null) merger.addAll(headers);
 
-      final response = await _client.post(url, headers: merger, body: body, encoding: encoding);
+      final response = await _client.post(Uri.parse(url), headers: merger, body: body, encoding: encoding);
 
       return Response.fromJSON(json.decode(response.body));
     } catch(e, trace) {
@@ -54,7 +54,7 @@ class Repository {
 
       if(headers != null) merger.addAll(headers);
 
-      final response = await _client.put(url, headers: merger, body: body, encoding: encoding);
+      final response = await _client.put(Uri.parse(url), headers: merger, body: body, encoding: encoding);
 
       return Response.fromJSON(json.decode(response.body));
     } catch(e, trace) {
