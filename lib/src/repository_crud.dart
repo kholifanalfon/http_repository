@@ -10,7 +10,7 @@ abstract class RepositoryCRUD {
 
   Future<Map<String, String>> _params(Map<String, String>? params) async {
     if(params == null)
-      params = {};
+      params = Map<String, String>();
 
     String _token = await token;
     if(_token != '') {
