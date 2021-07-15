@@ -10,11 +10,7 @@ abstract class RepositoryCRUD {
 
   Future<Map<String, String>> get _headers async {
     Map<String, String> headers = {};
-
-    String _token = await token;
-    if(_token != '') {
-      headers.addAll({'X-Requested-With': _token});
-    }
+    headers.addAll({'X-Requested-With': 'Web-Api'});
 
     print(headers);
 
