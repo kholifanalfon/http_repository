@@ -27,8 +27,16 @@ class Repository {
       final response = await _client.post(url, headers: merger, body: body, encoding: encoding);
 
       return Response.fromJSON(json.decode(response.body));
-    } catch(e) {
-      return Response(result: false, status: 500, message: requestFailedMessage);
+    } catch(e, trace) {
+      return Response(result: false, status: 500, message: requestFailedMessage, reporting: {
+        'type': 'dart',
+        'filename': 'repository.dart',
+        'classname': 'Repository',
+        'function': 'post',
+        'line': 13,
+        'message': e.toString(),
+        'trace': trace,
+      });
     }
   }
 
@@ -49,8 +57,16 @@ class Repository {
       final response = await _client.put(url, headers: merger, body: body, encoding: encoding);
 
       return Response.fromJSON(json.decode(response.body));
-    } catch(e) {
-      return Response(result: false, status: 500, message: requestFailedMessage);
+    } catch(e, trace) {
+      return Response(result: false, status: 500, message: requestFailedMessage, reporting: {
+        'type': 'dart',
+        'filename': 'repository.dart',
+        'classname': 'Repository',
+        'function': 'put',
+        'line': 43,
+        'message': e.toString(),
+        'trace': trace,
+      });
     }
   }
 
@@ -89,8 +105,16 @@ class Repository {
       final response = await _client.get(newUrl, headers: merger);
 
       return Response.fromJSON(json.decode(response.body));
-    } catch(e) {
-      return Response(result: false, status: 500, message: requestFailedMessage);
+    } catch(e, trace) {
+      return Response(result: false, status: 500, message: requestFailedMessage, reporting: {
+        'type': 'dart',
+        'filename': 'repository.dart',
+        'classname': 'Repository',
+        'function': 'get',
+        'line': 73,
+        'message': e.toString(),
+        'trace': trace,
+      });
     }
   }
 
@@ -128,8 +152,16 @@ class Repository {
       final response = await _client.delete(newUrl, headers: merger);
 
       return Response.fromJSON(json.decode(response.body));
-    } catch(e) {
-      return Response(result: false, status: 500, message: requestFailedMessage);
+    } catch(e, trace) {
+      return Response(result: false, status: 500, message: requestFailedMessage, reporting: {
+        'type': 'dart',
+        'filename': 'repository.dart',
+        'classname': 'Repository',
+        'function': 'delete',
+        'line': 121,
+        'message': e.toString(),
+        'trace': trace,
+      });
     }
   }
 
@@ -150,8 +182,16 @@ class Repository {
       http.Response response = await http.Response.fromStream(await req.send());
 
       return Response.fromJSON(json.decode(response.body));
-    } catch(e) {
-      return Response(result: false, status: 500, message: requestFailedMessage);
+    } catch(e, trace) {
+      return Response(result: false, status: 500, message: requestFailedMessage, reporting: {
+        'type': 'dart',
+        'filename': 'repository.dart',
+        'classname': 'Repository',
+        'function': 'multiPart',
+        'line': 168,
+        'message': e.toString(),
+        'trace': trace,
+      });
     }
   }
 }
