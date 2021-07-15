@@ -11,7 +11,6 @@ abstract class RepositoryCRUD {
 
     String _token = await token;
     if(_token != '') {
-      _headers.addAll({'Cookie': '$_token'});
       _headers.addAll({'Set-Cookie': '$_token'});
     }
     
