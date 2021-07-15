@@ -19,6 +19,7 @@ class Repository {
 
       merger.addAll({
         'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json',
       });
 
       if(headers != null) merger.addAll(headers);
@@ -40,6 +41,7 @@ class Repository {
 
       merger.addAll({
         'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json',
       });
 
       if(headers != null) merger.addAll(headers);
@@ -79,6 +81,7 @@ class Repository {
 
       merger.addAll({
         'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json',
       });
 
       if(headers != null) merger.addAll(headers);
@@ -117,6 +120,7 @@ class Repository {
 
       merger.addAll({
         'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': 'application/json',
       });
 
       if(headers != null) merger.addAll(headers);
