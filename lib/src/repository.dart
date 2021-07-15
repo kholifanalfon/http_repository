@@ -22,7 +22,10 @@ class Repository {
         'Accept': 'application/json',
       });
 
+      print(merger);
+      print('');
       if(headers != null) merger.addAll(headers);
+      print(merger);
 
       final response = await _client.post(Uri.parse(url), headers: merger, body: body, encoding: encoding);
 
