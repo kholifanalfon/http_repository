@@ -11,7 +11,7 @@ abstract class RepositoryCRUD {
 
     String _token = await token;
     if(_token != '')
-      _headers.addAll({'Authorization-Key': '$_token'});
+      _headers.addAll({'X-Token': '$_token'});
     
     return _headers;
   }
