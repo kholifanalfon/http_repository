@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:http/http.dart' as http;
 import 'package:http_repository/http_repository.dart';
 
@@ -12,8 +10,10 @@ abstract class RepositoryCRUD {
     Map<String, String> _headers = {};
 
     String _token = await token;
-    if(_token != '')
-      _headers.addAll({HttpHeaders.setCookieHeader: 'x-token: $_token'});
+    if(_token != '') {
+      _headers.addAll({'Cookie': '$_token'});
+      _headers.addAll({'Set-Cookie': '$_token'});
+    }
     
     return _headers;
   }
