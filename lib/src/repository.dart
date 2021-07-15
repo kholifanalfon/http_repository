@@ -15,11 +15,30 @@ class Repository {
   }) async {
 
     try {
+
+      Uri newUrl;
+      if(url.toString().indexOf('https') > -1) {
+        String hostDir = api.replaceAll('https://', '');
+        String host = hostDir.indexOf('/') > -1 ? hostDir.substring(0, hostDir.indexOf('/')) : hostDir;
+        String dir = hostDir.indexOf('/') > - 1 ? hostDir.replaceAll(host, '').substring(1) : '';
+        String request = dir + url.toString().replaceAll(api, '');
+
+        newUrl = Uri.https(host, request, body);
+      } else {
+        String hostDir = api.toString().replaceAll('http://', '');
+        String host = hostDir.indexOf('/') > -1 ? hostDir.substring(0, hostDir.indexOf('/')) : hostDir;
+        String dir = hostDir.indexOf('/') > - 1 ? hostDir.replaceAll(host, '').substring(1) : '';
+        String request = dir + url.toString().replaceAll(api, '');
+
+        newUrl = Uri.http(host, request, body);
+      }
+
       Map<String, String> merger = new Map<String, String>();
 
       merger.addAll({
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',
+        'Host': newUrl.host,
       });
 
       print(merger);
@@ -27,7 +46,7 @@ class Repository {
       if(headers != null) merger.addAll(headers);
       print(merger);
 
-      final response = await _client.post(Uri.parse(url), headers: merger, body: body, encoding: encoding);
+      final response = await _client.post(newUrl, headers: merger, body: body, encoding: encoding);
 
       return Response.fromJSON(json.decode(response.body));
     } catch(e) {
@@ -40,16 +59,34 @@ class Repository {
   }) async {
 
     try {
+      Uri newUrl;
+      if(url.toString().indexOf('https') > -1) {
+        String hostDir = api.replaceAll('https://', '');
+        String host = hostDir.indexOf('/') > -1 ? hostDir.substring(0, hostDir.indexOf('/')) : hostDir;
+        String dir = hostDir.indexOf('/') > - 1 ? hostDir.replaceAll(host, '').substring(1) : '';
+        String request = dir + url.toString().replaceAll(api, '');
+
+        newUrl = Uri.https(host, request, body);
+      } else {
+        String hostDir = api.toString().replaceAll('http://', '');
+        String host = hostDir.indexOf('/') > -1 ? hostDir.substring(0, hostDir.indexOf('/')) : hostDir;
+        String dir = hostDir.indexOf('/') > - 1 ? hostDir.replaceAll(host, '').substring(1) : '';
+        String request = dir + url.toString().replaceAll(api, '');
+
+        newUrl = Uri.http(host, request, body);
+      }
+
       Map<String, String> merger = new Map<String, String>();
 
       merger.addAll({
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',
+        'Host': newUrl.host,
       });
 
       if(headers != null) merger.addAll(headers);
 
-      final response = await _client.put(url, headers: merger, body: body, encoding: encoding);
+      final response = await _client.put(newUrl, headers: merger, body: body, encoding: encoding);
 
       return Response.fromJSON(json.decode(response.body));
     } catch(e) {
