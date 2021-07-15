@@ -129,7 +129,7 @@ class Repository {
     }
   }
 
-  static Future<Response> multiPart(url, String method, {Map<String, String>? fields, List<http.MultipartFile>? files}) async {
+  static Future<Response> multiPart(url, String method, {Map<String, String>? fields, List<http.MultipartFile>? files, Map<String, String>? headers}) async {
     try {
 
       final req = http.MultipartRequest(method, Uri.parse(url));
@@ -139,6 +139,9 @@ class Repository {
 
       if(files != null)
         req.files.addAll(files);
+
+      if(headers != null)
+        req.headers.addAll(headers);
 
       http.Response response = await http.Response.fromStream(await req.send());
 
