@@ -98,6 +98,7 @@ class Repository {
       Map<String, String> merger = new Map<String, String>();
 
       merger.addAll({
+        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',
         'X-Requested-With': 'testing',
