@@ -19,15 +19,19 @@ class Repository {
 
       merger.addAll({
         'Content-Type': 'application/x-www-form-urlencoded',
+        'Access-Control-Allow-Credentials': 'true',
         'Accept': 'application/json',
-        'X-Requested-With': 'testing',
       });
 
       if(headers != null) merger.addAll(headers);
 
-      final response = await _client.post(Uri.parse(url), headers: merger, body: body, encoding: encoding);
+      http.Request request = http.Request("post", Uri.parse(url));
+      request.headers.addAll(merger);
+      request.body = body.toString();
 
-      return Response.fromJSON(json.decode(response.body));
+      final response = await request.send();
+
+      return Response.fromJSON(json.decode(response.stream.toString()));
     } catch(e, trace) {
       return Response(result: false, status: 500, message: requestFailedMessage, reporting: {
         'type': 'dart',
@@ -50,8 +54,8 @@ class Repository {
 
       merger.addAll({
         'Content-Type': 'application/x-www-form-urlencoded',
+        'Access-Control-Allow-Credentials': 'true',
         'Accept': 'application/json',
-        'X-Requested-With': 'testing',
       });
 
       if(headers != null) merger.addAll(headers);
@@ -98,10 +102,9 @@ class Repository {
       Map<String, String> merger = new Map<String, String>();
 
       merger.addAll({
-        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/x-www-form-urlencoded',
+        'Access-Control-Allow-Credentials': 'true',
         'Accept': 'application/json',
-        'X-Requested-With': 'testing',
       });
 
       if(headers != null) merger.addAll(headers);
@@ -147,9 +150,9 @@ class Repository {
       Map<String, String> merger = new Map<String, String>();
 
       merger.addAll({
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Access-Control-Allow-Credentials': 'true',
         'Accept': 'application/json',
-        'X-Requested-With': 'testing',
       });
 
       if(headers != null) merger.addAll(headers);
