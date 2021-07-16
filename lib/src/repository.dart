@@ -27,10 +27,11 @@ class Repository {
       http.Request request = http.Request("post", Uri.parse(url));
       request.headers.addAll(merger);
       request.body = body.toString();
+      request.send();
 
-      final response = await request.send();
+      final response = await _client.post(Uri.parse(url), body:body, encoding: encoding);
 
-      return Response.fromJSON(json.decode(response.stream.toString()));
+      return Response.fromJSON(json.decode(response.body));
     } catch(e, trace) {
       return Response(result: false, status: 500, message: requestFailedMessage, reporting: {
         'type': 'dart',
