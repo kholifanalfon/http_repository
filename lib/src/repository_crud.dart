@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:http/http.dart' as http;
 import 'package:http_repository/http_repository.dart';
 
@@ -9,15 +11,9 @@ abstract class RepositoryCRUD {
   Future<Map<String, String>> get _headers async {
     Map<String, String> _headers = {};
 
-    print(_headers);
-
     String _token = await token;
     if(_token != '')
-      _headers.addAll({
-        'Authorization': 'Bearer $_token'
-      });
-
-    print(_headers);
+      _headers.addAll({HttpHeaders.authorizationHeader: _token});
     
     return _headers;
   }
@@ -47,6 +43,6 @@ abstract class RepositoryCRUD {
   }
 
   Future<Response> delete(int id, {Map<String, String>? params}) async {
-    return Repository.post("$api/delete/$id", body: params, headers: await _headers);
+    return Repository.delete("$api/$id", body: params, headers: await _headers);
   }
 }

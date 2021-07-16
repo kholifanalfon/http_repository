@@ -1,6 +1,6 @@
 name: http_repository
-description: A new Flutter project.
-version: 1.1.0
+description: Simple way to create service repository crud with authorization
+version: 1.1.1
 homepage: https://github.com/kholifanalfon/http_repository.git
 
 environment:

@@ -1,6 +1,6 @@
-## 1.1.0
+## 1.1.1
 
-* Add token headers
+* Add authorization headers
 
 ## 1.0.0
 
