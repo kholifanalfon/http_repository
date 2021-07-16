@@ -68,7 +68,7 @@ class Repository {
         'filename': 'repository.dart',
         'classname': 'Repository',
         'function': 'put',
-        'line': 43,
+        'line': 13,
         'message': e.toString(),
         'trace': trace,
       });
@@ -116,7 +116,7 @@ class Repository {
         'filename': 'repository.dart',
         'classname': 'Repository',
         'function': 'get',
-        'line': 73,
+        'line': 78,
         'message': e.toString(),
         'trace': trace,
       });
@@ -163,14 +163,14 @@ class Repository {
         'filename': 'repository.dart',
         'classname': 'Repository',
         'function': 'delete',
-        'line': 121,
+        'line': 126,
         'message': e.toString(),
         'trace': trace,
       });
     }
   }
 
-  static Future<Response> multiPart(url, String method, {Map<String, String>? fields, List<http.MultipartFile>? files, Map<String, String>? headers}) async {
+  static Future<Response> multiPart(url, {String method = 'POST', Map<String, String>? fields, List<http.MultipartFile>? files, Map<String, String>? headers}) async {
     try {
 
       final req = http.MultipartRequest(method, Uri.parse(url));
@@ -193,7 +193,7 @@ class Repository {
         'filename': 'repository.dart',
         'classname': 'Repository',
         'function': 'multiPart',
-        'line': 168,
+        'line': 173,
         'message': e.toString(),
         'trace': trace,
       });

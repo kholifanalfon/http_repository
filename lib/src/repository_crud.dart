@@ -6,12 +6,12 @@ import 'package:http_repository/http_repository.dart';
 abstract class RepositoryCRUD {
   String get api => '';
 
-  Future<String> get token => Future(() => '');
+  Future<String> get credentials => Future(() => '');
 
   Future<Map<String, String>> get _headers async {
     Map<String, String> _headers = {};
 
-    String _token = await token;
+    String _token = await credentials;
     if(_token != '')
       _headers.addAll({HttpHeaders.authorizationHeader: _token});
     
@@ -31,7 +31,7 @@ abstract class RepositoryCRUD {
   }
 
   Future<Response> store(Map<String, String> datas, {List<http.MultipartFile>? files}) async {
-    return Repository.multiPart('$api', 'POST', fields: datas, files: files, headers: await _headers);
+    return Repository.post(api, body: datas, headers: await _headers);
   }
 
   Future<Response> show(int id, {Map<String, String>? params}) async {
@@ -39,7 +39,7 @@ abstract class RepositoryCRUD {
   }
 
   Future<Response> update(int id, Map<String, String> datas, {List<http.MultipartFile>? files}) async {
-    return Repository.multiPart("$api/update/$id", 'POST', fields: datas, files: files, headers: await _headers);
+    return Repository.put("$api/$id", body: datas, headers: await _headers);
   }
 
   Future<Response> delete(int id, {Map<String, String>? params}) async {
