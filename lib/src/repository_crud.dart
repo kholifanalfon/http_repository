@@ -14,8 +14,6 @@ abstract class RepositoryCRUD {
     String _token = await token;
     if(_token != '')
       _headers.addAll({
-        'Access-Control-Request-Method': 'POST',
-        'Access-Control-Request-Headers': 'Authorization',
         'Authorization': 'Bearer $_token'
       });
 
