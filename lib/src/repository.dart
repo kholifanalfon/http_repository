@@ -20,6 +20,7 @@ class Repository {
       merger.addAll({
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',
+        'X-Requested-With': 'testing',
       });
 
       if(headers != null) merger.addAll(headers);
@@ -50,6 +51,7 @@ class Repository {
       merger.addAll({
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',
+        'X-Requested-With': 'testing',
       });
 
       if(headers != null) merger.addAll(headers);
@@ -98,6 +100,7 @@ class Repository {
       merger.addAll({
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',
+        'X-Requested-With': 'testing',
       });
 
       if(headers != null) merger.addAll(headers);
@@ -143,8 +146,9 @@ class Repository {
       Map<String, String> merger = new Map<String, String>();
 
       merger.addAll({
-        'Content-Type': 'application/json; charset=UTF-8',
+        'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',
+        'X-Requested-With': 'testing',
       });
 
       if(headers != null) merger.addAll(headers);
