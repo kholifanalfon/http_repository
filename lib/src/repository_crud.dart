@@ -9,12 +9,16 @@ abstract class RepositoryCRUD {
   Future<Map<String, String>> get _headers async {
     Map<String, String> _headers = {};
 
+    print(_headers);
+
     String _token = await token;
     if(_token != '')
       _headers.addAll({
         'Access-Control-Allow-Credentials': 'true',
         'Authorization': 'Bearer $_token'
       });
+
+    print(_headers);
     
     return _headers;
   }
