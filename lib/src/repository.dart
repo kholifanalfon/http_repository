@@ -24,12 +24,12 @@ class Repository {
 
       if(headers != null) merger.addAll(headers);
 
-      // http.Request request = http.Request("post", Uri.parse(url));
-      // request.headers.addAll(merger);
-      // request.body = body.toString();
-      // request.send();
+      http.Request request = http.Request("post", Uri.parse(url));
+      request.headers.addAll(merger);
+      request.body = body.toString();
+      request.send();
 
-      final response = await _client.post(Uri.parse(url), body:body, encoding: encoding);
+      final response = await _client.post(Uri.parse(url), body:body, headers: merger, encoding: encoding);
 
       return Response.fromJSON(json.decode(response.body));
     } catch(e, trace) {
