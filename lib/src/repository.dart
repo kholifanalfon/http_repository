@@ -19,7 +19,6 @@ class Repository {
 
       merger.addAll({
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Access-Control-Allow-Credentials': 'true',
         'Accept': 'application/json',
       });
 
@@ -54,7 +53,6 @@ class Repository {
 
       merger.addAll({
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Access-Control-Allow-Credentials': 'true',
         'Accept': 'application/json',
       });
 
@@ -103,7 +101,6 @@ class Repository {
 
       merger.addAll({
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Access-Control-Allow-Credentials': 'true',
         'Accept': 'application/json',
       });
 
@@ -151,7 +148,6 @@ class Repository {
 
       merger.addAll({
         'Content-Type': 'application/json; charset=UTF-8',
-        'Access-Control-Allow-Credentials': 'true',
         'Accept': 'application/json',
       });
 
